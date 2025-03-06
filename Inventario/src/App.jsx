@@ -10,7 +10,7 @@ const App = () => {
 
   const handleLogin = (token) => {
     setToken(token);
-    localStorage.setItem("token", token); // Guardar el token en el localStorage
+    localStorage.setItem("token", token); 
   };
 
   const handleLogout = () => {
