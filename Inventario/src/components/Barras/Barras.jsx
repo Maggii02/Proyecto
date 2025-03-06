@@ -1,4 +1,3 @@
-// src/components/Barras.jsx
 import React, { useState } from "react";
 import BarraSuperior from "./BarraSuperior";
 import BarraLateral from "./BarraLateral";
@@ -8,23 +7,19 @@ const Barras = ({ onLogout }) => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleToggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
-
-  const handleCloseSidebar = () => {
-    setShowSidebar(false);
+    setShowSidebar((prev) => !prev);
   };
 
   return (
     <div>
-      {/* Barra Superior */}
+      {/* Pasa correctamente la función a la barra superior */}
       <BarraSuperior
         onLogout={onLogout}
         onToggleSidebar={handleToggleSidebar}
       />
 
-      {/* Barra Lateral */}
-      <BarraLateral show={showSidebar} onClose={handleCloseSidebar} />
+      {/* Barra lateral */}
+      <BarraLateral show={showSidebar} onClose={() => setShowSidebar(false)} />
 
       {/* Contenido principal */}
       <Home onLogout={onLogout} />

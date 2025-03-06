@@ -1,13 +1,11 @@
-// src/components/BarraSuperior.jsx
 import React from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const BarraSuperior = ({ onLogout }) => {
+const BarraSuperior = ({ onLogout, onToggleSidebar }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Llama a la función onLogout que elimina el token
     onLogout();
     navigate("/"); // Redirige a la página de login
   };
@@ -19,7 +17,13 @@ const BarraSuperior = ({ onLogout }) => {
       style={{ backgroundColor: "#565552" }}
     >
       <Container fluid>
+        {/* Botón para abrir/cerrar la barra lateral */}
+        <Button variant="light" className="me-2" onClick={onToggleSidebar}>
+          <i className="bi bi-list" />
+        </Button>
+
         <Nav className="me-auto"></Nav>
+
         <Button variant="warning" onClick={handleLogout}>
           <i className="bi bi-box-arrow-right" /> Cerrar sesión
         </Button>
